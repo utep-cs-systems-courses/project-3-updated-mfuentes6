@@ -6,7 +6,7 @@
 #include "lcdutils.h"
 #include "lcddraw.h"
 
-
+char draw = 0;
 char dimmer;
 char dim_state = 0;
 char dimmerOne = 0;
@@ -129,4 +129,70 @@ void dim75(){
   }
   leds_changed = 1;
   led_update();
+}
+
+void drawSomething(){
+  clearScreen(COLOR_RED);
+  switch(draw){
+  case 0:
+    draw = 1;
+    drawHouse();
+    break;
+  case 1:
+    draw = 2;
+    drawStar();
+    break;
+  case 2:
+    draw = 3;
+    drawGrid();
+    break;
+  case 3:
+    draw = 0;
+    drawTriangles();
+    break;
+  default: draw = 0; drawString5x7(20,20, "default string", COLOR_BLACK, COLOR_RED); break;
+  }
+  
+}
+
+void drawHouse(){
+  int offset = 0;
+  int row = 63;
+  while(offset != 10){
+    for(int middle = 0; middle <= offset){
+      drawPixel(63, row, COLOR_BLACK);
+      drawPixel(63+middle, row, COLOR_BLACK);
+      drawPixel(63-middle, row, COLOR_BLACK);
+    }
+    offset++;
+    row++;
+  }
+  fillRectangle(53,73,73,93,COLOR_BLACK);
+  fillRectangle(60,88,68,93, COLOR_GREEN);
+
+}
+
+void drawStar(){
+  for(int i = 0; i < 128; i++){
+    drawPixel(63,i,COLOR_BLACK);
+  }
+  for(int j = 0; j < 128; j++){
+    drawPixel(i,63,COLOR_BLACK);
+  }
+  for(int k = 0; k<128; k++){
+    drawPixel(k,k,COLOR_BLACK);
+  }
+  int col = 0;
+  for(int l = 127; l >= 0;l--){
+    drawPixel(col,l,COLOR_BLACK);
+    col++;
+  }
+}
+
+void drawGrid(){
+  
+}
+void drawTriangles(){
+
+
 }

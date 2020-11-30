@@ -5,6 +5,7 @@ char button;
 char do_dim;
 char dimmer;
 char dim_state;
+char draw;
 
 void state_advance();
 void buzzer_advance();
@@ -13,5 +14,11 @@ void speed_selection();
 void dim25();
 void dim50();
 void dim75();
+void drawSomething();
+void drawHouse();
+void drawStar();
+void drawGrid();
+void drawTriangles();
+
 
 #endif
