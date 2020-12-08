@@ -5,6 +5,10 @@
 #ifndef lcddraw_included
 #define lcddraw_included
 
+
+void drawString11x16(u_char col, u_char row, char *string, u_int fgColorBGR, u_int bgColorBGR);
+void drawChar11x16(u_char col, u_char row, char c, u_int fgColorBGR, u_int bgColorBGR);
+
 /** Draw single pixel at col, row 
  *
  *  \param col Column to draw to
