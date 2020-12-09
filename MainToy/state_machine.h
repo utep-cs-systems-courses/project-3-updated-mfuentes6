@@ -6,6 +6,7 @@ char do_dim;
 char dimmer;
 char dim_state;
 char draw;
+char seconds;
 
 void state_advance();
 void buzzer_advance();

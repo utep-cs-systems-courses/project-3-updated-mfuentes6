@@ -7,7 +7,7 @@
 #include "lcddraw.h"
 
 char do_dim = 0;
-
+char seconds = 150;
 
 void
 __interrupt_vec(WDT_VECTOR) WDT(){
@@ -20,7 +20,7 @@ __interrupt_vec(WDT_VECTOR) WDT(){
   }
 
 
-  if(++blink_count == 125){
+  if(++blink_count == seconds){
     if(button == 4){
       do_dim = 0;
       buzzer_advance();
@@ -40,18 +40,19 @@ __interrupt_vec(WDT_VECTOR) WDT(){
       led_update();
       blink_count = 0;
     }
-    else if (button == 3);{
+    else if (button == 1);{
+      clearScreen(COLOR_RED);
       green_on = 1;
       led_update();
-      //put draw string call for font 8 x 12
+      drawString11x16(10,80,"I'm Batman", COLOR_BLACK, COLOR_YELLOW);
       blink_count = 0;
       green_on = 0;
       led_update();
     }
-    else{
+    else{// default state when loaded on to msp430
       state_advance();
       clearScreen(COLOR_BLUE);
-      drawString5x7(20,80, "No buttons pressed yet", COLOR_BLACK, COLOR_BLUE);
+      drawString11x16(10,80, "No buttons pressed yet", COLOR_BLACK, COLOR_BLUE);
       blink_count = 0;
     }
   }

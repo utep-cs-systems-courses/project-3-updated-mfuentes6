@@ -190,9 +190,53 @@ void drawStar(){
 }
 
 void drawGrid(){
-  
+  fillRectangle(32,40,96,120,COLOR_BLACK);
+  for(int i = 60; i <= 100; i += 20){
+    for(int j = 32; j<= 96; j++){
+      drawPixel(j,i,COLOR_GREEN);
+    }
+  }
+  for(int k = 48; k <= 70; k+= 16){
+    for(int h = 40; h<= 120; h++){
+      drawPixel(k,h,COLOR_GREEN);
+    }
+  }
 }
+
+
 void drawTriangles(){
 
+  int col = 30;
+  int row = 60;
+  for(int i = 0; i<= 30; i++){
+    drawPixel(col,row,COLOR_BLACK);
+    col++;
+    row--;
+  }
+  for(int j = 0; j<=30; j++){
+    drawPixel(col,row,COLOR_BLACK);
+    col++;
+    row++;
+  }
+  for(int k = 0; k<= 60; k++){
+    drawPixel(col,row, COLOR_BLACKE);
+    col--;
+  }
+  col = 45;
+  row = 45;
+  for(int i = 0; i<=15; i++){
+    drawPixel(col,row,COLOR_BLACK);
+    col++;
+    row++;
+  }
+  for(int k = 0; k <=15; k++){
+    drawPixel(col,row,COLOR_BLACK);
+    col++;
+    row--;
+  }
+  for(int l = 0; l <= 30; l++){
+    drawPixel(col,row,COLOR_BLACK);
+    col--;
+  }
 
 }

@@ -40,6 +40,7 @@ void switch_interupt_handler(){
     button = 1; //speed which leds are lit and unlit
     buzzer_set_period(note);
     do_dim = 0;
+    seconds = 500;
   }
 
   if(B2){
@@ -47,6 +48,7 @@ void switch_interupt_handler(){
     button = 2;
     buzzer_set_period(note);
     do_dim = 0;
+    seconds = 1000;
   }
 
   if(B3){
@@ -54,11 +56,13 @@ void switch_interupt_handler(){
     note = 1000;
     dimmer = 0;
     do_dim = 1;
+    seconds = 150;
   }
 
   if(B4){
     buzzer_set_period(400);
     button = 4;
     do_dim = 0;
+    seconds = 150;
   }
 }
