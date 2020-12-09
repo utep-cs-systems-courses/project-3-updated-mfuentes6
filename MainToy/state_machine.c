@@ -130,27 +130,26 @@ void dim75(){
   leds_changed = 1;
   led_update();
 }
+void drawSelection(){
+  switch(draw){
+  case 0: draw = 1; break;
+  case 1: draw = 2; break;
+  case 2: draw = 3; break;
+  case 3: draw = 0; break;
+  default: draw = 0; break;
+
+  }
+
+}
 
 void drawSomething(){
   clearScreen(COLOR_RED);
   switch(draw){
-  case 0:
-    draw = 1;
-    drawHouse();
-    break;
-  case 1:
-    draw = 2;
-    drawStar();
-    break;
-  case 2:
-    draw = 3;
-    drawGrid();
-    break;
-  case 3:
-    draw = 0;
-    drawTriangles();
-    break;
-  default: draw = 0; drawString5x7(20,20, "default string", COLOR_BLACK, COLOR_RED); break;
+  case 0: drawHouse(); break;
+  case 1: drawStar(); break;
+  case 2: drawGrid(); break;
+  case 3: drawTriangles(); break;
+  default: draw = 0; break;
   }
   
 }
@@ -159,7 +158,7 @@ void drawHouse(){
   int offset = 0;
   int row = 63;
   while(offset != 10){
-    for(int middle = 0; middle <= offset){
+    for(int middle = 0; middle <= offset; middle++){
       drawPixel(63, row, COLOR_BLACK);
       drawPixel(63+middle, row, COLOR_BLACK);
       drawPixel(63-middle, row, COLOR_BLACK);
@@ -177,7 +176,7 @@ void drawStar(){
     drawPixel(63,i,COLOR_BLACK);
   }
   for(int j = 0; j < 128; j++){
-    drawPixel(i,63,COLOR_BLACK);
+    drawPixel(j,63,COLOR_BLACK);
   }
   for(int k = 0; k<128; k++){
     drawPixel(k,k,COLOR_BLACK);
@@ -219,7 +218,7 @@ void drawTriangles(){
     row++;
   }
   for(int k = 0; k<= 60; k++){
-    drawPixel(col,row, COLOR_BLACKE);
+    drawPixel(col,row, COLOR_BLACK);
     col--;
   }
   col = 45;

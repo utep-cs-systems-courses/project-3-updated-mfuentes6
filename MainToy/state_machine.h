@@ -6,8 +6,9 @@ char do_dim;
 char dimmer;
 char dim_state;
 char draw;
-char seconds;
+short seconds;
 
+void drawSelection();
 void state_advance();
 void buzzer_advance();
 void dim_advance();

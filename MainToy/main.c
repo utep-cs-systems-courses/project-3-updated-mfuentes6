@@ -5,6 +5,7 @@
 #include "switches.h"
 #include "lcdutils.h"
 #include "lcddraw.h"
+#include "state_machine.h"
 
 void main(void){
   configureClocks();
@@ -13,6 +14,15 @@ void main(void){
   switch_init();
   buzzer_init();
   enableWDTInterrupts();
-  or_sr(0x18);
+  or_sr(0x8);
+
+  while(1){
+    if(button == 1){
+      drawString11x16(10,60,"HELLO",COLOR_BLACK,COLOR_RED);
+    }
+    P1OUT &= ~LED_GREEN;
+    or_sr(0x10);
+    P1OUT |= LED_GREEN;
+  }
 
 }
