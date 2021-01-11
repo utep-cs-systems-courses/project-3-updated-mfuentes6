@@ -39,30 +39,21 @@ void switch_interupt_handler(){
     note = 2000; //buzzer note
     button = 1; 
     buzzer_set_period(note);
-    do_dim = 0;
-    seconds = 500;
   }
 
   if(B2){
     note = 7000; 
     button = 2;
     buzzer_set_period(note);
-    do_dim = 0;
-    seconds = 1000;
   }
 
   if(B3){
     button = 3;
     note = 1000;
-    dimmer = 0;
-    do_dim = 1;
-    seconds = 150;
   }
 
   if(B4){
     buzzer_set_period(400);
     button = 4;
-    do_dim = 0;
-    seconds = 150;
   }
 }

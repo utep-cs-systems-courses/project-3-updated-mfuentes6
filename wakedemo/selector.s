@@ -1,14 +1,16 @@
+	.arch msp430g2553
+	.p2align 1,0
 	.text
+
+	.extern redrawScreen
 jt:
 	.word default
 	.word option1
 	.word option2
 	.word option3
 
-
-	.extern redrawScreen
-	.global f
-f:
+	.global new_screen
+new_screen:
 	cmp #4, &redrawScreen
 	jhs default
 
