@@ -22,7 +22,7 @@ new_screen:
 	;; switch table options
 
 option3:
-	add #1, &redrawScreen
+	mov #1, &redrawScreen
 	jmp end
 
 option2:
@@ -35,6 +35,6 @@ option1:
 	jmp end
 
 default:
-	mov #0, &redrawScreen
+	mov #1, &redrawScreen
 end:
 	pop r0

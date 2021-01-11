@@ -20,10 +20,11 @@ void wdt_c_handler()
   secCount ++;
   if (secCount == 500) {		/* once/sec */
     secCount = 0;
+    leds_changed = 1;
     fontFgColor = (fontFgColor == COLOR_GREEN) ? COLOR_BLACK : COLOR_GREEN;
 
     switch(button){
-    case 1: do_dim = 1; speed_selection(); break;
+    case 1: do_dim = 1; speed_selection(); led_update(); break;
     case 2: do_dim = 0; buzzer_advance(); break;
     case 3: do_dim = 0; drawSomething(); drawSelection(); break;
     case 4: do_dim = 0; leds_changed = 1; state_advance(); break;
@@ -55,7 +56,7 @@ void main()
       case 1: drawString11x16(10,20,"I am", COLOR_BLACK,COLOR_BLUE); break;
       case 2: drawString11x16(10,20, "the Batman", COLOR_BLACK,COLOR_BLUE); break;
       case 3: drawString11x16(10,20, "fear me!", COLOR_BLACK, COLOR_BLUE); break;
-      default: redrawScreen = 0; break;
+      default: redrawScreen = 1; break;
       }
       new_screen();
     }
