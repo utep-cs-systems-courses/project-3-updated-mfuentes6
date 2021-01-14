@@ -13,6 +13,8 @@ char do_dim = 0;
 short redrawScreen = 1;
 u_int fontFgColor = COLOR_GREEN;
 
+
+
 void wdt_c_handler()
 {
   static int secCount = 0;
@@ -51,7 +53,7 @@ void main()
   clearScreen(COLOR_BLUE);
   while (1) {			/* forever */
     if (button == 0) {
-      clearScreen(COLOR_BLUE);
+      new_color();
       switch(redrawScreen){
       case 1: drawString11x16(10,20,"I am", COLOR_BLACK,COLOR_BLUE); break;
       case 2: drawString11x16(10,20, "the Batman", COLOR_BLACK,COLOR_BLUE); break;
@@ -65,6 +67,7 @@ void main()
       dim_state %= 4;
       dim_advance();
     }
+    
     P1OUT &= ~LED_GREEN;	/* green off */
     or_sr(0x10);		/**< CPU OFF */
     P1OUT |= LED_GREEN;		/* green on */

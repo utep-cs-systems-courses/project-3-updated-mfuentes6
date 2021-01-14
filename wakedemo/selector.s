@@ -3,6 +3,7 @@
 	.text
 
 	.extern redrawScreen
+	.extern clearScreen
 jt:
 	.word default
 	.word option1
@@ -10,13 +11,18 @@ jt:
 	.word option3
 
 	.global new_screen
+	.global new_color
+new_color:
+	mov.b 0xf800, r12 		;color blue
+	call #clearScreen
+	jmp end
 new_screen:
 	cmp #4, &redrawScreen
 	jhs default
 
-	mov &redrawScreen, r12
-	add r12, r12		; add to itself to get the offset
-	mov jt(r12), r0		;jumps to jt[redrawScreen]
+	mov &redrawScreen, r13
+	add r13, r13			; add to itself to get the offset
+	mov jt(r13), r0		;jumps to jt[redrawScreen]
 
 
 	;; switch table options
